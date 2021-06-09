@@ -6,7 +6,7 @@ and certain events that are worth checking
 
 import unittest
 from sqlalchemy.sql.sqltypes import String
-from models.engine.db_storage import db_storage
+from models.engine.db_storage import DBStorage
 from io import StringIO
 from console import HBNBCommand
 import os
@@ -27,18 +27,18 @@ class TestConsole(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as x:
             HBNBCommand().onecmd("create State name=\"Fugue\"")
             state_id = x.getvalue()
-        if type(models.storage) != db_storage:
+        if type(models.storage) != DBStorage:
             with open(models.storage.all(), 'r') as y:
                 self.assertIn(state_id, y.read())
 
-        if type(models.storage) != db_storage:
+        if type(models.storage) != DBStorage:
             self.assertEqual(type(state_id), String)
 
         with patch('sys.stdout', new=StringIO()) as x:
             HBNBCommand().onecmd("create City name=\"Despondency\"")
             city_id = x.getvalue()
 
-        if type(models.storage) != db_storage:
+        if type(models.storage) != DBStorage:
             with open(models.storage.all(), 'r') as y:
                 self.assertIn(city_id, y.read())
 
@@ -47,7 +47,7 @@ class TestConsole(unittest.TestCase):
             HBNBCommand().onecmd("create City name=\"mild_dysthymia\"")
             city_id = x.getvalue()
 
-        if type(models.storage) != db_storage:
+        if type(models.storage) != DBStorage:
             with open(models.storage.all(), 'r') as y:
                 self.assertIn(city_id, y.read())
 

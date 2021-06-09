@@ -19,7 +19,7 @@ classes = {
           }
 
 
-class db_storage:
+class DBStorage:
     """A method of storage???"""
     __engine = None
     __session = None
