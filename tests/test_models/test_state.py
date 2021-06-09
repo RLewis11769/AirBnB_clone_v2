@@ -17,3 +17,13 @@ class test_state(test_basemodel):
         """ """
         new = self.value()
         self.assertEqual(type(new.name), str)
+
+    def create_state(self):
+        """Instantialization"""
+        y = []
+        x = 0
+        pass
+
+    def create_state_id(self):
+        """Check that an id was cxreated attached to state"""
+        pass
