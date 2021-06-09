@@ -38,9 +38,8 @@ class db_storage:
                                           self.database),
                                       pool_pre_ping=True)
 
-        if (self.database == 'hbnb_test_db'):
-            cur = self.__engine.cursor()
-            cur.execute("DROP TABLES")
+        if getenv('HBNB_ENV') == 'test':
+            Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
         """query current db sesh: all objects of class.name"""

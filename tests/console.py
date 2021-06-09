@@ -5,7 +5,6 @@ and certain events that are worth checking
 """
 
 import unittest
-
 from sqlalchemy.sql.sqltypes import String
 from models.engine.db_storage import db_storage
 from io import StringIO
@@ -43,7 +42,6 @@ class TestConsole(unittest.TestCase):
             with open(models.storage.all(), 'r') as y:
                 self.assertIn(city_id, y.read())
 
-
         with patch('sys.stdout', new=StringIO()) as x:
             HBNBCommand().onecmd("create State name=\"Sorrow\" id=1")
             HBNBCommand().onecmd("create City name=\"mild_dysthymia\"")
@@ -53,11 +51,9 @@ class TestConsole(unittest.TestCase):
             with open(models.storage.all(), 'r') as y:
                 self.assertIn(city_id, y.read())
 
-
     # def test_all
 
     # def test_update
 
 if __name__ == '__main__':
     unittest.main()
-    
