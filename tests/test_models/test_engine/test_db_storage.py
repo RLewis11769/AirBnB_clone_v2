@@ -8,7 +8,7 @@ from console import HBNBCommand
 from unittest.mock import patch
 
 
-@unittest.skipIf(environ.get('HBNB_TYPE_STORAGE') != 'db', "Database Storage")
+@unittest.skipIf(environ.get('HBNB_TYPE_STORAGE') == 'db', "Database Storage")
 class test_db_storage(unittest.TestCase):
     """ Class to test DBStorage methods """
 
