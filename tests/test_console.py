@@ -23,6 +23,8 @@ class TestConsole(unittest.TestCase):
 
     # def test_destroy
 
+    @unittest.skipIf(environ.get('HBNB_TYPE_STORAGE') == 'db',
+                     "Database Storage")
     def test_create(self):
         """Test whether we make cookies"""
         with patch('sys.stdout', new=StringIO()) as x:
@@ -52,7 +54,8 @@ class TestConsole(unittest.TestCase):
             with open(models.storage._FileStorage__file_path, 'r') as y:
                 self.assertNotIn(city_id, y.read())
 
-    @unittest.skipIf(environ.get('HBNB_TYPE_STORAGE') == 'db', "Database Storage")
+    @unittest.skipIf(environ.get('HBNB_TYPE_STORAGE') == 'db',
+                     "Database Storage")
     def test_all(self):
         """ Tests for all of db """
         with patch('sys.stdout', new=StringIO()) as x:
