@@ -4,6 +4,7 @@ testing the console for intantialization
 and certain events that are worth checking
 """
 
+from os import environ
 import unittest
 from sqlalchemy.sql.sqltypes import String
 from models.engine.db_storage import DBStorage
