@@ -51,6 +51,18 @@ class TestConsole(unittest.TestCase):
             with open(models.storage._FileStorage__file_path, 'r') as y:
                 self.assertNotIn(city_id, y.read())
 
+    @unittest.skipIf(environ.get('HBNB_TYPE_STORAGE') == 'db', "Database Storage")
+    def test_all(self):
+        """ Tests for all of db """
+        with patch('sys.stdout', new=StringIO()) as x:
+            HBNBCommand().onecmd("create State name='Altered'")
+            state = x.getvalue()
+            state = state[:-1]
+        with patch('sys.stdout', new=StringIO()) as x:
+            HBNBCommand().onecmd("show State {}".format(state))
+            state_all = x.getvalue()
+        self.assertIn(state, state_all)
+
     # def test_all
 
     # def test_update
