@@ -24,7 +24,7 @@ class test_db_storage(unittest.TestCase):
         self.assertIn(state, state_all)
 
         with patch('sys.stdout', new=StringIO()) as x:
-            HBNBCommand().onecmd("create City name='Bank', state_id={}".format(state))
+            HBNBCommand().onecmd("create City name='Bank' state_id={}".format(state))
             city = x.getvalue()
             city = city[:-1]
         with patch('sys.stdout', new=StringIO()) as x:
