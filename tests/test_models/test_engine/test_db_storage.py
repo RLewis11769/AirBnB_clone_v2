@@ -1,34 +1,37 @@
 #!/usr/bin/python3
-""" Module for testing file storage"""
+"""tests for db storage"""
 import unittest
-from models.base_model import BaseModel, Base
-from models.state import State
+import sys
 from os import environ
-import models
-import MySQLdb
 from io import StringIO
 from console import HBNBCommand
 from unittest.mock import patch
 
 
-args = {'user': environ.get('HBNB_MYSQL_USER'), 'pwd': environ.get('HBNB_MYSQL_PWD'), 'daba': environ.get('HBNB_MYSQL_DB'),'host': environ.get('HBNB_MYSQL_HOST')
-       }
-
-
-@unittest.skipIf(environ.get('HBNB_TYPE_STORAGE') != 'db', 'Database Storage')
-class test_dbStorage(unittest.TestCase):
-    """ Class to test DBStorage method """
+@unittest.skipIf(environ.get('HBNB_TYPE_STORAGE') != 'db', "Database Storage")
+class test_db_storage(unittest.TestCase):
+    """ Class to test DBStorage methods """
 
     def test_all(self):
-        """ Open test db and run tests """
-        self.dbas = MySQLdb.connect(**args)
-        self.cursor = self.dbas.cursor()
-        self.cursor.execute("SELECT count(*) FROM STATES")
-        leng = self.cursor.fetchone()[0]
-        self.cursor.reload()
+        """ Tests for all of db """
         with patch('sys.stdout', new=StringIO()) as x:
-            HBNBCommand().onecmd("Create State name=\"Fugue\"")
-        self.cursor = self.dbas.cursor()
-        self.cursor.execute("SELECT count(*) FROM STATES")
-        lengt = self.cursor.fetchone()[0]
-        self.assertEqual(lengt, leng + 1)
+            HBNBCommand().onecmd("create State name='Altered'")
+            state = x.getvalue()
+            state = state[:-1]
+        with patch('sys.stdout', new=StringIO()) as x:
+            HBNBCommand().onecmd("show State {}".format(state))
+            state_all = x.getvalue()
+        self.assertIn(state, state_all)
+
+        with patch('sys.stdout', new=StringIO()) as x:
+            HBNBCommand().onecmd("create City name='Bank', state_id={}".format(state))
+            city = x.getvalue()
+            city = city[:-1]
+        with patch('sys.stdout', new=StringIO()) as x:
+            HBNBCommand().onecmd("show City {}".format(city))
+            cities = x.getvalue()
+        self.assertIn(city, cities)
+
+
+if __name__ == '__main__':
+    unittest.main()
