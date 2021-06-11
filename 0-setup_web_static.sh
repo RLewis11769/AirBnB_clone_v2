@@ -25,6 +25,7 @@
 
 # Use alias inside your Nginx configuration
 
+
 sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt-get -y install nginx
