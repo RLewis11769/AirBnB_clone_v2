@@ -32,8 +32,8 @@ sudo service nginx start
 
 sudo mkdir -p /data/web_static/releases/test
 sudo mkdir -p /data/web_static/shared
-sudo touch /data/web_static/relases/test/index.html
-sudo echo "womp" | sudo tee /data/web_static/relases/test/index.html
+
+sudo echo "womp" | sudo tee /data/web_static/releases/test/index.html
 
 sudo ln -sfn /data/web_static/releases/test/ /data/web_static/current
 
