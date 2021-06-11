@@ -13,7 +13,6 @@ def do_pack():
 
         tarArchiveName = "web_static_" + now.strftime("%Y%m%d%H%M%S") + ".tgz"
 
-
         local("mkdir -p versions")
 
         local("tar -czvf versions/" + tarArchiveName + " web_static")

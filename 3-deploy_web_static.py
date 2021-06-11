@@ -14,6 +14,7 @@ def deploy():
         return False
     status = do_deploy(archive)
 
+
 def do_deploy(archive_path):
     """deploy an archive"""
 
@@ -25,10 +26,13 @@ def do_deploy(archive_path):
 
     put(archive_path, '/tmp/' + archiveName)
     run("mkdir -p /data/web_static/releases/" + archiveNamenoext)
-    run("tar xzvf /tmp/" + archiveName + " -C " + archiveNamenoext + " --strip-components=1")
+    run("tar xzvf /tmp/" + archiveName + " -C " +
+        archiveNamenoext + " --strip-components=1")
     run("rm -f /tmp/" + archiveName)
     run("rm -f /data/web_static/current")
-    run("ln -sf /data/web_static/releases/" + archiveNamenoext + " /data/web_static/current")
+    run("ln -sf /data/web_static/releases/" + archiveNamenoext +
+        " /data/web_static/current")
+
 
 def do_pack():
     """Pack up the webstatic"""
