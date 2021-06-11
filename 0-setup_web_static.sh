@@ -25,18 +25,17 @@
 
 # Use alias inside your Nginx configuration
 
-
 sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt-get -y install nginx
 sudo service nginx start
 
-sudo mkdir -p /data/web-static/releases/test
-sudo mkdir -p /data/web-static/shared
-sudo touch /data/web-static/relases/test/index.html
-sudo echo "womp" | sudo tee /data/web-static/relases/test/index.html
+sudo mkdir -p /data/web_static/releases/test
+sudo mkdir -p /data/web_static/shared
+sudo touch /data/web_static/relases/test/index.html
+sudo echo "womp" | sudo tee /data/web_static/relases/test/index.html
 
-sudo ln -sf /data/web-static/releases/test/ /data/web_static/current
+sudo ln -sfn /data/web_static/releases/test/ /data/web_static/current
 
 sudo chown -hR ubuntu:ubuntu /data/
 
