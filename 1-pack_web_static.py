@@ -8,11 +8,14 @@ from datetime import datetime
 def do_pack():
     """Pack up the webstatic"""
 
-    now = datetime.now()
+    try:
+        now = datetime.now()
 
-    tarArchiveName = "web_static_" + now.strftime("%Y%m%d%H%M%S") + ".tgz"
+        tarArchiveName = "web_static_" + now.strftime("%Y%m%d%H%M%S") + ".tgz"
 
 
-    local("mkdir -p versions")
+        local("mkdir -p versions")
 
-    local("tar -czvf versions/" + tarArchiveName + " web_static")
+        local("tar -czvf versions/" + tarArchiveName + " web_static")
+    except:
+        return None
