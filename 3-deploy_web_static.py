@@ -1,10 +1,10 @@
-#!/usr/bin/python3                                                                                                                                                                                                                          
-"""Write a Fabric script (based on the file 1-pack_web_static.py) that"""
-"""distributes an archive to your web servers"""
+#!/usr/bin/python3
+"""Write a Fabric script (based on the file 1-pack_web_static.py)"""
 
+import os.path
 from fabric.api import local, env, run, put
 from datetime import datetime
-import os.path
+
 env.hosts = ['54.172.197.155', '34.230.92.222']
 
 
@@ -16,10 +16,12 @@ def deploy():
     status = do_deploy(archive)
     return status
 
+
 def do_deploy(archive_path):
-    """                                                                                                                                                                                                                                     
-    deploy an archive, preferable one that funcitons well enough to be legible.                                                                                                                                                             
-    If it isn't legible, maybe this code will at least pass the notations requirement.                                                                                                                                                      
+    """
+    deploy an archive, preferable one that funcitons well enough to be legible.
+    If it isn't legible, maybe this code will at least pass
+    the notations requirement.
     """
 
     if not os.path.exists(archive_path):
@@ -44,10 +46,11 @@ def do_deploy(archive_path):
     except:
         return False
 
+
 def do_pack():
-    """                                                                                                                                                                                                                                     
-    Pack up the webstatic. Send it to its mother's place.                                                                                                                                                                                   
-    The weekend is entirely yours.                                                                                                                                                                                                          
+    """
+    Pack up the webstatic. Send it to its mother's place.
+    The weekend is entirely yours.
     """
 
     try:
