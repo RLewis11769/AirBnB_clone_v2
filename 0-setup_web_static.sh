@@ -39,6 +39,6 @@ sudo ln -sfn /data/web_static/releases/test/ /data/web_static/current
 
 sudo chown -hR ubuntu:ubuntu /data/
 
-sudo sed -i "s@^\tlocation / {@\tlocation /hbnb_static {\n\t\talias /data/web_static/current/;\n\t\tautoindex off;\n\t}\n\n\tlocation / {@" /etc/nginx/sites-available/default
+sudo sed -i "s@^\tlocation / {@\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t\tautoindex off;\n\t}\n\n\tlocation / {@" /etc/nginx/sites-available/default
 sudo service nginx restart
 exit 0
