@@ -32,7 +32,10 @@ env.hosts = ['54.172.197.155, 34.230.92.222']
 
 
 def do_deploy(archive_path):
-    """deploy an archive"""
+    """
+    deploy an archive, preferable one that funcitons well enough to be legible.
+    If it isn't legible, maybe this code will at least pass the notations requirement.
+    """
 
     if not os.path.exists(archive_path):
         return False
@@ -57,7 +60,10 @@ def do_deploy(archive_path):
         return False
 
 def do_pack():
-    """Pack up the webstatic"""
+    """
+    Pack up the webstatic. Send it to its mother's place.
+    The weekend is entirely yours.
+    """
 
     try:
         now = datetime.now()
