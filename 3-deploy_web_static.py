@@ -14,6 +14,7 @@ def deploy():
     if archive is None:
         return False
     status = do_deploy(archive)
+    return status
 
 def do_deploy(archive_path):
     """                                                                                                                                                                                                                                     
@@ -53,7 +54,7 @@ def do_pack():
         now = datetime.now()
         tarArchiveName = "web_static_" + now.strftime("%Y%m%d%H%M%S") + ".tgz"
         local("mkdir -p versions")
-        local("tar -xzvf versions/" + tarArchiveName + " web_static")
+        local("tar -czvf versions/" + tarArchiveName + " web_static")
         return ("versions/" + tarArchiveName)
     except:
         return None

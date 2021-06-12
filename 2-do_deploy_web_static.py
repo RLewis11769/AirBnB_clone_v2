@@ -21,9 +21,7 @@ def do_deploy(archive_path):
         archiveName = archive_path[9:]
         archiveNamenoext = archiveName[:-4]
 
-        print("before")
         put(archive_path, '/tmp/' + archiveName)
-        print("after")
         run("mkdir -p /data/web_static/releases/" + archiveNamenoext)
         run("tar -xzvf /tmp/" + archiveName + " -C " +
             "/data/web_static/releases/" +
@@ -48,7 +46,7 @@ def do_pack():
         now = datetime.now()
         tarArchiveName = "web_static_" + now.strftime("%Y%m%d%H%M%S") + ".tgz"
         local("mkdir -p versions")
-        local("tar -xzvf versions/" + tarArchiveName + " web_static")
+        local("tar -czvf versions/" + tarArchiveName + " web_static")
         return ("versions/" + tarArchiveName)
     except:
         return None
