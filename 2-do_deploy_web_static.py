@@ -12,7 +12,7 @@ env.hosts = ['54.174.125.120', '34.234.63.53']
 
 
 def do_deploy(archive_path):
-    """ 
+    """
     Deploys archive to web_server aka puts archive on server
     Run with: fab -f 2-do_deploy_web_static.py do_deploy:archive_path=versions/
         web_static_"datetime".tgz -i "privateKey" -u ubuntu
@@ -54,7 +54,7 @@ def do_deploy(archive_path):
 
 
 def do_pack():
-    """ 
+    """
     Pack up web_static directory
     Run with: fab -f 1-pack_web_static.py do_pack
     """

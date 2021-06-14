@@ -9,7 +9,7 @@ from datetime import datetime
 
 
 def do_pack():
-    """ 
+    """
     Pack up web_static directory
     Run with: fab -f 1-pack_web_static.py do_pack
     """
