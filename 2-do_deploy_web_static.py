@@ -17,12 +17,12 @@ def do_deploy(archive_path):
         return False
     try:
         # archiveName is web_static_datetime.tgz created in do_pack
-        archiveName = tarArchivePath[9:]  # after "versions/"
+        archiveName = archive_path[9:]  # after "versions/"
         woExtension = archiveName[:-4]  # before "".tgz"
 
         # put uploads file from local to remote
         # Uploads tarball archive from local to /tmp/ directory
-        put(tarArchivePath, '/tmp/' + archiveName)
+        put(archive_path, '/tmp/' + archiveName)
         # Makes new directory for storing history of releases
         run("mkdir -p /data/web_static/releases/" + woExtension)
         # Uses fabric to unzip compressed archive file into releases dir
