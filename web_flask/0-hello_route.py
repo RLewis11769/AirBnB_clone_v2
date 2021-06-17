@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" Starts Flask web application on 0.0.0.0 port 5000 """
 
 from flask import Flask
 
