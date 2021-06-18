@@ -21,6 +21,7 @@ def index():
     # Return converted into response object with default parameters
     return "Hello HBNB!"
 
+
 @app.route('/hbnb', strict_slashes=False)
 def hbnb():
     """ Displays 'HBNB' """
