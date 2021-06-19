@@ -2,9 +2,10 @@
 """
 Starts Flask web application on 0.0.0.0 port 5000
 Contains response for home page, /hbnb, and /c/<text>
+Adds variable compared to previous versions
 """
 
-from flask import Flask
+from flask import Flask, render_template
 
 
 # Pass import_name/application package to Flask class
@@ -28,10 +29,12 @@ def hbnb():
     return "HBNB"
 
 
-@app.route('/c/<text>', strict_slashes=False)
-def c_plus_anything():
+@app.route('/c/<subpath>', strict_slashes=False)
+def c_plus_anything(subpath):
     """ Displays C then text after /c/ """
-    return "C %s" % text
+    # subpath is variable denoted by app.route and passed in
+    subpath = subpath.replace("_", " ")
+    return "C %s" % subpath
 
 # Calls function when called
 if __name__ == "__main__":
